@@ -1,3 +1,9 @@
+v1.2.0
+======
+
+To align with other plugins, instead supply ``manuscript.url``
+for to resolve Manuscript URLs.
+
 v1.1.0
 ======
 
