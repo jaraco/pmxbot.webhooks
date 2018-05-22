@@ -1,4 +1,4 @@
-Welcome to jaraco.pmxbot documentation!
+Welcome to pmxbot.webhooks documentation!
 =======================================
 
 .. toctree::
@@ -7,7 +7,7 @@ Welcome to jaraco.pmxbot documentation!
    history
 
 
-.. automodule:: jaraco.pmxbot
+.. automodule:: pmxbot.webhooks
     :members:
     :undoc-members:
     :show-inheritance:
