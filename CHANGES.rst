@@ -7,8 +7,7 @@ for to resolve Manuscript URLs.
 v1.1.0
 ======
 
-Supply ``Manuscript URL`` in order to provide clickable hyperlinks
-to Manuscript URLs.
+Solicit Manuscript URL from config to provide clickable hyperlinks.
 
 v1.0.0
 ======
