@@ -1,3 +1,9 @@
+v1.1.0
+======
+
+Supply ``Manuscript URL`` in order to provide clickable hyperlinks
+to Manuscript URLs.
+
 v1.0.0
 ======
 

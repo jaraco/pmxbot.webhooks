@@ -126,7 +126,7 @@ class Manuscript(ChannelSelector):
 
 		event['EventType'] = ManuscriptEventType(event['EventType'])
 
-		base = "https://yougov.manuscript.com"
+		base = pmxbot.config.get('Manuscript URL', 'manuscript:')
 		message = (
 			"{PersonEditingName} {EventType.action} {Title} "
 			"({base}/default.asp?{CaseNumber})"
