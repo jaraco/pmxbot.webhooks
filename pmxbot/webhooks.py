@@ -265,6 +265,7 @@ def actually_decode():
 	dec = codecs.getincrementaldecoder('utf-8')()
 	cherrypy.request.body = map(dec.decode, cherrypy.request.body)
 
+
 adt = cherrypy.Tool('before_handler', actually_decode)
 cherrypy.tools.actually_decode = adt
 
