@@ -9,9 +9,9 @@ import setuptools
 with io.open('README.rst', encoding='utf-8') as readme:
 	long_description = readme.read()
 
-name = 'skeleton'
-description = ''
-nspkg_technique = 'native'
+name = 'pmxbot.webhooks'
+description = 'An HTTP-based webhook service for pmxbot'
+nspkg_technique = 'managed'
 """
 Does this package use "native" namespace packages or
 pkg_resources "managed" namespace packages?
@@ -31,7 +31,7 @@ params = dict(
 		name.split('.')[:-1] if nspkg_technique == 'managed'
 		else []
 	),
-	python_requires='>=2.7',
+	python_requires='>=3.5',
 	install_requires=[
 	],
 	extras_require={
