@@ -1,5 +1,5 @@
-1.0
-===
+v1.0.0
+======
 
 Adopt webhooks implemnetation from jaraco.pmxbot.http 4.0.1.
 
