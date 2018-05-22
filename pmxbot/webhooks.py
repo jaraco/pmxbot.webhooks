@@ -98,7 +98,7 @@ class NewRelic(object):
 		)
 
 
-class FogbugzEventType(str):
+class ManuscriptEventType(str):
 	@property
 	def action(self):
 		"""
@@ -109,7 +109,7 @@ class FogbugzEventType(str):
 		return action.lower()
 
 
-class FogBugz(ChannelSelector):
+class Manuscript(ChannelSelector):
 	handled_types = 'CaseOpened', 'CaseClosed'
 
 	@cherrypy.expose
@@ -119,14 +119,14 @@ class FogBugz(ChannelSelector):
 		return "OK"
 
 	def handle_case(self, event):
-		log.info("Got case update from FogBugz: %s", event)
+		log.info("Got case update from Manuscript: %s", event)
 
 		if event['EventType'] not in self.handled_types:
 			return
 
-		event['EventType'] = FogbugzEventType(event['EventType'])
+		event['EventType'] = ManuscriptEventType(event['EventType'])
 
-		base = "https://yougov.fogbugz.com"
+		base = "https://yougov.manuscript.com"
 		message = (
 			"{PersonEditingName} {EventType.action} {Title} "
 			"({base}/default.asp?{CaseNumber})"
@@ -275,7 +275,7 @@ class Server(object):
 
 	new_relic = NewRelic()
 	jenkins = Jenkins()
-	fogbugz = FogBugz()
+	fogbugz = manuscript = Manuscript()
 	velociraptor = Velociraptor()
 
 	@classmethod
