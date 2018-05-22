@@ -25,7 +25,7 @@ params = dict(
 	description=description or name,
 	long_description=long_description,
 	url="https://github.com/jaraco/" + name,
-	packages=setuptools.find_packages(),
+	packages=setuptools.find_packages(exclude='tests'),
 	include_package_data=True,
 	namespace_packages=(
 		name.split('.')[:-1] if nspkg_technique == 'managed'
@@ -33,6 +33,9 @@ params = dict(
 	),
 	python_requires='>=3.5',
 	install_requires=[
+		'twilio>=6',
+		'cherrypy_cors',
+		'jaraco.itertools',
 	],
 	extras_require={
 		'testing': [
@@ -43,6 +46,8 @@ params = dict(
 			'pytest-flake8',
 
 			# local
+			'pmxbot',
+			'cherrypy[testing]',
 		],
 		'docs': [
 			# upstream
@@ -60,10 +65,12 @@ params = dict(
 		"Development Status :: 5 - Production/Stable",
 		"Intended Audience :: Developers",
 		"License :: OSI Approved :: MIT License",
-		"Programming Language :: Python :: 2.7",
 		"Programming Language :: Python :: 3",
 	],
 	entry_points={
+		'pmxbot_handlers': [
+			'webhooks = pmxbot.webhooks.http',
+		],
 	},
 )
 if __name__ == '__main__':
