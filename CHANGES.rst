@@ -1,3 +1,8 @@
+v1.2.1
+======
+
+Fix error in entry point for webhooks.
+
 v1.2.0
 ======
 

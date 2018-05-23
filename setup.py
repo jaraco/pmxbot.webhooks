@@ -69,7 +69,7 @@ params = dict(
 	],
 	entry_points={
 		'pmxbot_handlers': [
-			'webhooks = pmxbot.webhooks.http',
+			'webhooks = pmxbot.webhooks',
 		],
 	},
 )
