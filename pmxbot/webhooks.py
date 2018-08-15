@@ -21,7 +21,7 @@ import cherrypy_cors
 log = logging.getLogger(__name__)
 
 
-class ChannelSelector(object):
+class ChannelSelector:
 	@property
 	def channel_spec_config(self):
 		"""
@@ -79,7 +79,7 @@ class Jenkins(ChannelSelector):
 		yield tmpl.format(**vars())
 
 
-class NewRelic(object):
+class NewRelic:
 
 	@cherrypy.expose
 	def default(self, channel, **kwargs):
@@ -270,7 +270,7 @@ adt = cherrypy.Tool('before_handler', actually_decode)
 cherrypy.tools.actually_decode = adt
 
 
-class Server(object):
+class Server:
 	queue = []
 
 	new_relic = NewRelic()
