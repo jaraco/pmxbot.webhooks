@@ -9,7 +9,6 @@ from pmxbot.webhooks import Server
 
 
 class ServerTest(helper.CPWebCase):
-
     def setUp(self):
         Server.queue.clear()
 
@@ -29,14 +28,17 @@ class ServerTest(helper.CPWebCase):
         Server.send_to('chan2', 'msg2')
         Server.send_to('chan3', 'msg3\nmsg4')
         assert Server.queue == [
-            'chan1', 'msg1',
-            'chan2', 'msg2',
-            'chan3', 'msg3', 'msg4',
+            'chan1',
+            'msg1',
+            'chan2',
+            'msg2',
+            'chan3',
+            'msg3',
+            'msg4',
         ]
 
 
 class VelociraptorTest(helper.CPWebCase):
-
     @staticmethod
     def setup_server():
         cherrypy.tree.mount(Server())
@@ -67,10 +69,10 @@ class VelociraptorTest(helper.CPWebCase):
 
     def test_event_invalid(self):
         for payload in [
-                {},  # no tags
-                {'tags': ['route']},  # no title
-                {'tags': ['swarm', 'deploy', 'done']},  # no title
-                {'tags': ['scheduled', 'failed']},  # no message
+            {},  # no tags
+            {'tags': ['route']},  # no title
+            {'tags': ['swarm', 'deploy', 'done']},  # no title
+            {'tags': ['scheduled', 'failed']},  # no message
         ]:
             self._post_json(payload)
             self.assertStatus('400 Bad Request')
@@ -94,10 +96,12 @@ class VelociraptorTest(helper.CPWebCase):
         self._post_json(payload)
         self.assertStatus('200 OK')
         self.assertBody('OK')
-        mock_send_to.assert_has_calls([
-            mock.call('chan1', 'VR: Routed My Swarm'),
-            mock.call('chan2', 'VR: Routed My Swarm'),
-        ])
+        mock_send_to.assert_has_calls(
+            [
+                mock.call('chan1', 'VR: Routed My Swarm'),
+                mock.call('chan2', 'VR: Routed My Swarm'),
+            ]
+        )
 
     @mock.patch('pmxbot.webhooks.Server.send_to')
     @mock.patch('pmxbot.webhooks.ChannelSelector.get_channels')
@@ -111,16 +115,19 @@ class VelociraptorTest(helper.CPWebCase):
         self._post_json(payload)
         self.assertStatus('200 OK')
         self.assertBody('OK')
-        mock_send_to.assert_has_calls([
-            mock.call('chan1', 'VR: Swarm MySwarm finished'),
-            mock.call('chan2', 'VR: Swarm MySwarm finished'),
-        ])
+        mock_send_to.assert_has_calls(
+            [
+                mock.call('chan1', 'VR: Swarm MySwarm finished'),
+                mock.call('chan2', 'VR: Swarm MySwarm finished'),
+            ]
+        )
 
     @mock.patch('pmxbot.webhooks.Server.send_to')
     @mock.patch('pmxbot.webhooks.ChannelSelector.get_channels')
     def test_event_scheduled_failed(self, mock_get_channels, mock_send_to):
         mock_get_channels.return_value = ['chan1']
-        message = textwrap.dedent("""
+        message = textwrap.dedent(
+            """
             MySwarm1@host: encoding.py failed:
             traceback
 
@@ -138,7 +145,8 @@ class VelociraptorTest(helper.CPWebCase):
             traceback2
             traceback2
             traceback2
-            """)
+            """
+        )
         payload = {
             'tags': ['scheduled', 'failed'],
             'message': message,
@@ -149,22 +157,27 @@ class VelociraptorTest(helper.CPWebCase):
         assert mock_send_to.call_args_list == [
             mock.call(
                 'chan1',
-                ('VR: Scheduled uptests failed for MySwarm1@host: '
-                 'encoding.py failed:'),
+                (
+                    'VR: Scheduled uptests failed for MySwarm1@host: '
+                    'encoding.py failed:'
+                ),
             ),
             mock.call(
                 'chan1',
-                ('VR: Scheduled uptests failed for MySwarm2@host: '
-                 'some other error...'),
+                (
+                    'VR: Scheduled uptests failed for MySwarm2@host: '
+                    'some other error...'
+                ),
             ),
             mock.call(
                 'chan1',
-                ('VR: Scheduled uptests failed for MySwarm3@host: '
-                 'bizarre bug;'),
+                ('VR: Scheduled uptests failed for MySwarm3@host: ' 'bizarre bug;'),
             ),
             mock.call(
                 'chan1',
-                ('VR: Scheduled uptests failed for MySwarm4@host: '
-                 'py3 stacktraces contain multiline tracebacks:'),
+                (
+                    'VR: Scheduled uptests failed for MySwarm4@host: '
+                    'py3 stacktraces contain multiline tracebacks:'
+                ),
             ),
         ]
