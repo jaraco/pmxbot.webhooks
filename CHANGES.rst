@@ -1,3 +1,8 @@
+v1.3.0
+======
+
+Refreshed packaging.
+
 v1.2.1
 ======
 
