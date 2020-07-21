@@ -6,7 +6,7 @@
 
 .. _PyPI link: https://pypi.org/project/pmxbot.webhooks
 
-.. image:: https://dev.azure.com/pmxbot/pmxbot.webhooks/_apis/build/status/pmxbot.pmxbot.webhooks?branchName=master
+.. image:: https://dev.azure.com/pmxbot/pmxbot.webhooks/_apis/build/status/jaraco.pmxbot.webhooks?branchName=master
    :target: https://dev.azure.com/pmxbot/pmxbot.webhooks/_build/latest?definitionId=1&branchName=master
 
 .. image:: https://img.shields.io/travis/jaraco/pmxbot.webhooks/master.svg
