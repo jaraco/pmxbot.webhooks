@@ -1,10 +1,20 @@
 .. image:: https://img.shields.io/pypi/v/pmxbot.webhooks.svg
-   :target: https://pypi.org/project/pmxbot.webhooks
+   :target: `PyPI link`_
 
 .. image:: https://img.shields.io/pypi/pyversions/pmxbot.webhooks.svg
+   :target: `PyPI link`_
+
+.. _PyPI link: https://pypi.org/project/pmxbot.webhooks
+
+.. image:: https://dev.azure.com/pmxbot/pmxbot.webhooks/_apis/build/status/pmxbot.pmxbot.webhooks?branchName=master
+   :target: https://dev.azure.com/pmxbot/pmxbot.webhooks/_build/latest?definitionId=1&branchName=master
 
 .. image:: https://img.shields.io/travis/jaraco/pmxbot.webhooks/master.svg
    :target: https://travis-ci.org/jaraco/pmxbot.webhooks
+
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
+   :alt: Code style: Black
 
 .. .. image:: https://img.shields.io/appveyor/ci/jaraco/pmxbot-webhooks/master.svg
 ..    :target: https://ci.appveyor.com/project/jaraco/pmxbot-webhooks/branch/master
