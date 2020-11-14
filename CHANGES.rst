@@ -1,3 +1,10 @@
+v1.4.0
+======
+
+Refreshed packaging.
+
+Prefer more_itertools to jaraco.itertools.
+
 v1.3.0
 ======
 
