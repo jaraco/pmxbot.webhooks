@@ -13,7 +13,7 @@ from itertools import chain
 from typing import List, Union
 
 import pkg_resources
-from jaraco.itertools import always_iterable
+from more_itertools import always_iterable
 import cherrypy
 import pmxbot.core
 import cherrypy_cors
