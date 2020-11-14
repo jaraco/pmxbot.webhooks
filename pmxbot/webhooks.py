@@ -185,7 +185,7 @@ class Velociraptor(ChannelSelector):
         msg = event['message']
 
         def parse_msg():
-            '''Parse this notification message.
+            """Parse this notification message.
 
             The message is a sequence of individual failures.
             Each failure starts with a "header",
@@ -196,7 +196,7 @@ class Velociraptor(ChannelSelector):
             a header and accumulating traceback lines.
             We yield previous header and traceback as soon
             as we hit the following header.
-            '''
+            """
             header_re = re.compile(
                 r'(?P<appname>[a-zA-Z0-9_\-\.]+)'
                 r'@(?P<hostname>[a-zA-Z0-9\.]+): '
