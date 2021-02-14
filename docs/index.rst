@@ -1,5 +1,5 @@
-Welcome to pmxbot.webhooks documentation!
-=======================================
+Welcome to |project| documentation!
+===================================
 
 .. toctree::
    :maxdepth: 1
