@@ -12,7 +12,8 @@ import urllib.parse
 from itertools import chain
 from typing import List, Union
 
-import pkg_resources
+from .compat.py311 import resources
+
 from more_itertools import always_iterable
 import cherrypy
 import pmxbot.core
@@ -310,8 +311,12 @@ class Server:
         >>> 'href="javascript:' in bm
         True
         """
-        script = pkg_resources.resource_string(__name__, 'bookmarklet-min.js')
-        script = script.decode('utf-8').strip()
+        script = (
+            resources.files()
+            .joinpath('bookmarklet-min.js')
+            .read_text(encoding='utf-8')
+            .strip()
+        )
         hostname = cherrypy.request.headers['Host']
         script = script.replace('ircbot.example.com', hostname)
         script_href = 'javascript:' + urllib.parse.quote(script)

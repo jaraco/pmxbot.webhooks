@@ -1,0 +1,1 @@
+Replace pkg_resources with importlib_resources, alleviating deprecation warning.
