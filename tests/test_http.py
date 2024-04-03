@@ -51,7 +51,6 @@ class VelociraptorTest(helper.CPWebCase):
         return self.getPage("/velociraptor", **kwargs)
 
     def _post_json(self, data):
-
         body = json.dumps(data)
         kwargs = {
             'method': 'POST',
@@ -96,12 +95,10 @@ class VelociraptorTest(helper.CPWebCase):
         self._post_json(payload)
         self.assertStatus('200 OK')
         self.assertBody('OK')
-        mock_send_to.assert_has_calls(
-            [
-                mock.call('chan1', 'VR: Routed My Swarm'),
-                mock.call('chan2', 'VR: Routed My Swarm'),
-            ]
-        )
+        mock_send_to.assert_has_calls([
+            mock.call('chan1', 'VR: Routed My Swarm'),
+            mock.call('chan2', 'VR: Routed My Swarm'),
+        ])
 
     @mock.patch('pmxbot.webhooks.Server.send_to')
     @mock.patch('pmxbot.webhooks.ChannelSelector.get_channels')
@@ -115,12 +112,10 @@ class VelociraptorTest(helper.CPWebCase):
         self._post_json(payload)
         self.assertStatus('200 OK')
         self.assertBody('OK')
-        mock_send_to.assert_has_calls(
-            [
-                mock.call('chan1', 'VR: Swarm MySwarm finished'),
-                mock.call('chan2', 'VR: Swarm MySwarm finished'),
-            ]
-        )
+        mock_send_to.assert_has_calls([
+            mock.call('chan1', 'VR: Swarm MySwarm finished'),
+            mock.call('chan2', 'VR: Swarm MySwarm finished'),
+        ])
 
     @mock.patch('pmxbot.webhooks.Server.send_to')
     @mock.patch('pmxbot.webhooks.ChannelSelector.get_channels')

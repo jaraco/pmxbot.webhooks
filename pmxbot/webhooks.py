@@ -136,7 +136,6 @@ class Manuscript(ChannelSelector):
 
 
 class Velociraptor(ChannelSelector):
-
     SWARM_DEPLOY_DONE_RE = re.compile(r'Swarm (.+) finished')
 
     @cherrypy.expose
