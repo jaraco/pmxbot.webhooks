@@ -1,3 +1,13 @@
+v1.5.0
+======
+
+Features
+--------
+
+- Rely on PEP 420 for namespace package.
+- Replace pkg_resources with importlib_resources, alleviating deprecation warning.
+
+
 v1.4.0
 ======
 

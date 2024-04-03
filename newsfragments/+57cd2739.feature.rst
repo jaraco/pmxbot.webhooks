@@ -1,1 +1,0 @@
-Rely on PEP 420 for namespace package.
