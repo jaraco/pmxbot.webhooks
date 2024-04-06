@@ -9,7 +9,6 @@ import logging
 import codecs
 import textwrap
 import urllib.parse
-from itertools import chain
 from typing import List, Union
 
 from .compat.py311 import resources
