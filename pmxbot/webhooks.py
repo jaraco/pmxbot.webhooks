@@ -280,17 +280,15 @@ class Server:
     @classmethod
     def send_to(cls, channel, *msgs):
         cls.queue.append(pmxbot.core.SwitchChannel(channel))
-        # We must send line-by-line, so split multiline messages
-        lines = chain(*(msg.splitlines() for msg in msgs))
-        cls.queue.extend(lines)
+        cls.queue.extend(msgs)
 
     @cherrypy.expose
     @cherrypy.tools.actually_decode()
     def default(self, channel):
         lines = [line.rstrip() for line in cherrypy.request.body]
-        msg_len = sum(len(line.encode('utf-8')) for line in lines)
-        self.send_to(channel, *lines)
-        return '{msg_len} bytes queued for {channel}'.format(**locals())
+        payload = '\n'.join(lines)
+        self.send_to(channel, payload)
+        return f'{len(lines)} bytes queued for {channel}'
 
     @cherrypy.expose
     def bookmarklet(self):
