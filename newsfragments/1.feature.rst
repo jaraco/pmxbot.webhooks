@@ -1,1 +1,0 @@
-Instead of splitting lines, enqueue multiline messages, handled nicely by Slack.

@@ -1,3 +1,12 @@
+v1.6.0
+======
+
+Features
+--------
+
+- Instead of splitting lines, enqueue multiline messages, handled nicely by Slack. (#1)
+
+
 v1.5.0
 ======
 
