@@ -72,4 +72,9 @@ type = [
 [project.entry-points]
 pmxbot_handlers = {webhooks = "pmxbot.webhooks"}
 
+
 [tool.setuptools_scm]
+
+
+[tool.pytest-enabler.mypy]
+# Disabled due to jaraco/skeleton#143
