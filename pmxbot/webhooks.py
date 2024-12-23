@@ -221,9 +221,9 @@ class Velociraptor(ChannelSelector):
         for msg_ in parse_msg():
             (swarm, hostname, reason), _traceback = msg_
             app, sep, rest = swarm.partition('-')
-            text = (
-                'Scheduled uptests failed for ' '{swarm}@{hostname}: {reason}'
-            ).format(**locals())
+            text = ('Scheduled uptests failed for {swarm}@{hostname}: {reason}').format(
+                **locals()
+            )
             self._broadcast(app, text)
 
     def _broadcast(self, app, msg):

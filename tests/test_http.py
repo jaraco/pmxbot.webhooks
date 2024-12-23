@@ -151,21 +151,15 @@ class VelociraptorTest(helper.CPWebCase):
         assert mock_send_to.call_args_list == [
             mock.call(
                 'chan1',
-                (
-                    'VR: Scheduled uptests failed for MySwarm1@host: '
-                    'encoding.py failed:'
-                ),
+                ('VR: Scheduled uptests failed for MySwarm1@host: encoding.py failed:'),
             ),
             mock.call(
                 'chan1',
-                (
-                    'VR: Scheduled uptests failed for MySwarm2@host: '
-                    'some other error...'
-                ),
+                ('VR: Scheduled uptests failed for MySwarm2@host: some other error...'),
             ),
             mock.call(
                 'chan1',
-                ('VR: Scheduled uptests failed for MySwarm3@host: ' 'bizarre bug;'),
+                ('VR: Scheduled uptests failed for MySwarm3@host: bizarre bug;'),
             ),
             mock.call(
                 'chan1',
